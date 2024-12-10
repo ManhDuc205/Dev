@@ -1,5 +1,5 @@
 
-package LAB12_PHAN2;
+package LAB6_PHAN2;
 
 import java.util.Scanner;
 
