@@ -1,74 +1,74 @@
 #include <bits/stdc++.h>
 using namespace std;
 class DaThuc{
-	protected:
+	private:
+		int a[100] = {0};
 		int bacdt;
-		int a[15] = {0};
 	public:
-		DaThuc(){
-			bacdt = 0;
-			a[bacdt] = 0;
+		DaThuc(){			
 		}
-		friend istream &operator >>(istream &is, DaThuc &dt){
+		void nhap(){
 			cout << "Nhap bac cua da thuc: ";
-			is >> dt.bacdt;
+			cin >> bacdt;
 			cout << "Nhap he so cua da thuc: ";
-			for(int i = 0; i <= dt.bacdt; i++){
-				is >> dt.a[i];
+			for(int i = 0; i <= bacdt; i++){
+				cin >> a[i];
 			}
-			return is;
 		}
-		friend ostream &operator << (ostream &os, DaThuc &dt){
-			if(dt.bacdt >=0){
-				os << dt.a[dt.bacdt] << "x^" << dt.bacdt;
-				for(int i = dt.bacdt - 1; i > 0 ; i--){
-					if(dt.a[i] > 0){
-						os << "+" << dt.a[i] << "x^" << i;
+		void in(){
+			if(bacdt >= 0){
+				if (bacdt == 0) {
+		            cout << a[0];
+		            return;
+		        }
+				cout << a[bacdt] << "x^" << bacdt;
+				for(int i = bacdt - 1; i > 0; i--){
+					if(a[i] > 0){
+						cout << "+" << a[i] << "x^" << i;
 					}
-					else if (dt.a[i] < 0){
-						os << "-" << dt.a[i] << "x^" << i;
+					if(a[i] < 0){
+						cout << "-" << -a[i] << "x^" << i;
 					}
 				}
-				if(dt.a[0] >= 0){
-					os << "+" << dt.a[0] ;	
+				if(a[0] >= 0){
+					cout << "+" << a[0];
 				}
 				else{
-					os << "-" << dt.a[0];
+					cout << "-" << -a[0];
 				}
 			}
-			else {
-				os << "0";
-			}
-			return os;
+			else cout << "0";
 		}
-		DaThuc operator +(const DaThuc &dt){
+		DaThuc operator + (const DaThuc &dt1){
 			DaThuc sum;
-			sum.bacdt = max(bacdt, dt.bacdt);
+			sum.bacdt = max(bacdt, dt1.bacdt);
 			for(int i = 0; i <= sum.bacdt; i++){
-				sum.a[i] = a[i] + dt.a[i];
+				sum.a[i] = a[i] + dt1.a[i];
 			}
 			return sum;
 		}
-		DaThuc operator - (const DaThuc &dt){
-			DaThuc minus;
-			minus.bacdt = max(bacdt, dt.bacdt);
-			for(int i = 0; i <= minus.bacdt; i++){
-				minus.a[i] = a[i] - dt.a[i];
+		DaThuc operator - (const DaThuc &dt1){
+			DaThuc sub;
+			sub.bacdt = max(bacdt, dt1.bacdt);
+			for(int i = 0; i <= sub.bacdt; i++){
+				sub.a[i] = a[i] - dt1.a[i];
 			}
-			return minus;
+			return sub;
 		}
 };
 int main(){
 	DaThuc dt1, dt2;
-	cout << "Nhap Da thuc thu 1: ";
-	cin >> dt1;
-	cout << "Nhap Da thuc thu 2: ";
-	cin >> dt2;
-	cout << "Da thuc thu nhat: " << dt1 << endl;
-	cout << "Da thuc thu hai: " << dt2 << endl;
+	dt1.nhap();
+	dt2.nhap();
+	cout << "Da thuc thu nhat: ";
+	dt1.in();
+	cout <<"\n Da thuc thu hai: ";
+	dt2.in();
 	DaThuc sum = dt1 + dt2;
-	cout << "Tong 2 da thuc: " <<sum << endl;
-	DaThuc tru = dt1 - dt2;
-	cout << "Hieu 2 da thuc: " <<tru << endl;
-	
+	cout << "\nTong hai da thuc la: " << endl;
+	sum.in();
+	cout << endl;
+	DaThuc sub = dt1 - dt2;
+	cout << "Hieu hai da thuc la: " << endl;
+	sub.in(); 
 }
