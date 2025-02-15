@@ -32,7 +32,7 @@ using namespace std;
 int main(){
     int n, l;
     cin >> n  >> l;
-    int a[n];
+    int* a = new int[n];
     for(int i  = 0; i < n; i++){
         cin >> a[i];
     }
@@ -42,4 +42,5 @@ int main(){
         bkmax = max (bkmax , (a[i] - a[i - 1]) / 2.0);
     }
     cout << fixed << setprecision(10) << bkmax << endl;
+    delete[] a;
 }
