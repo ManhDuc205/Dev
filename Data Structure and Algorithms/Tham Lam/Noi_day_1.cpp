@@ -8,7 +8,6 @@ int minCost(vector<int>& dodai){
     for(int x : dodai){
         m.push(x);
     }
-
     int cost = 0;
     while(m.size() > 1){
         int first = m.top();
@@ -17,7 +16,6 @@ int minCost(vector<int>& dodai){
         m.pop();
         int tmp = first + second;
         cost += tmp;
-
         m.push(tmp);
     }
     return cost;
