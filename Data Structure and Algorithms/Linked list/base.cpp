@@ -79,6 +79,22 @@ void deleteMiddle(node &a, int pos){
         p->next = M->next;
     }
 }
+// Xóa phần tử ở cuối
+void deleteLast(node &a, int pos){
+    if(pos <= 0 || pos > Size(a)) return;
+    node p = NULL, M = a;
+    while(M->next != NULL){
+        p = M;
+        M = M->next;
+    }
+    if(p == NULL){
+        a = NULL;
+
+    }
+    else {
+        p->next = NULL;
+    }
+}
 int main(){
     cout << sizeof(Node) << endl;
 }
