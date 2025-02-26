@@ -5,7 +5,6 @@ struct Node
     int data;
     Node* next;
 };
-
 typedef struct Node* node;
 
 // Cập phát động một node mới với dữ liệu là số nguyên
@@ -56,6 +55,12 @@ void insertLast(node &a, int x ){
         }
         p->next = tmp;
     }
+}
+
+//Xóa phần tử ở đầu
+void deleteFirst(node &a){
+    if(a==NULL) return;
+    a = a->next;
 }
 
 //Xóa phần tử ở giữa 
