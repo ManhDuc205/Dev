@@ -57,6 +57,23 @@ void insertLast(node &a, int x ){
         p->next = tmp;
     }
 }
+
+//Xóa phần tử ở giữa 
+void deleteMiddle(node &a, int pos){
+    if(pos <= 0 || pos > Size(a)) return;
+    node p = NULL, M = a;
+    for(int i = 1; i < pos; i++){
+        p = M;
+        M = M ->next;
+    }
+    if(p == NULL){
+        a = a->next;
+
+    }
+    else {
+        p->next = M->next;
+    }
+}
 int main(){
     cout << sizeof(Node) << endl;
 }
