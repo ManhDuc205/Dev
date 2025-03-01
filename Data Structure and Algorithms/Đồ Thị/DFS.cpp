@@ -4,7 +4,7 @@
 #include <cstring>
 using namespace std;
 int n, m;
-vector<int> adj[1001];
+vector<int> ke[1001];
 bool visited[1001];
 int a[1001][1001];
 void input(){
@@ -18,7 +18,7 @@ void input(){
     for(int i = 1; i<= n; i++){
         for(int j = 1; j <= n; j++){
             if(a[i][j] != 0){
-                adj[i].push_back(j);
+                ke[i].push_back(j);
             }
         }
     }
@@ -28,7 +28,7 @@ void input(){
 void DFS(int u){
     cout << u << " ";
     visited[u] = true;
-    for(int v : adj[u]){
+    for(int v : ke[u]){
         if(visited[v] == false ){
             DFS(v);
         }
