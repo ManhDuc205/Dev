@@ -28,19 +28,19 @@ int Find(int u){
 bool Union(int u, int v){
     u = Find(u);
     v = Find(v);
-    if(u == v){
+    if(u == v){ // Nếu cùng một tập hợp, không cần nối
         return false;
     }
-    if (sz[u] > sz[v]) {
+    if (sz[u] > sz[v]) { // Nối cây nhỏ vào cây lớn hơn
         parent[v] = u;
         sz[u] += sz[v];
     } else {
         parent[u] = v;
         sz[v] += sz[u]; 
     }
-    
     return true;
 }
+
 
 void nhap(){
     cin >> n >> m;
