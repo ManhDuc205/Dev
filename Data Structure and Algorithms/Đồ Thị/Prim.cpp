@@ -45,7 +45,6 @@ void Prim(int s){
                 }
             }
         }
-        
     }
     cout << d << endl;
 }
