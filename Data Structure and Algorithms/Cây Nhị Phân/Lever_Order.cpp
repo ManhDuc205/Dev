@@ -3,18 +3,20 @@ using namespace std;
 
 struct Node {
     int data;
-    Node *left, *right;
-    
-    // Constructor để khởi tạo node
-    Node(int x) {
-        data = x;
-        left = right = NULL;
-    }
+    Node *left;
+    Node *right;
 };
 
+Node *makeNode(int x) {
+    Node *newNode = new Node;
+    newNode->data = x;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
+
 void makeRoot(Node *root, int u, int v, char c) {
-    if (c == 'L') root->left = new Node(v);
-    else root->right = new Node(v);
+    if (c == 'L') root->left = makeNode(v);
+    else root->right = makeNode(v);
 }
 
 void insertNode(Node *root, int u, int v, char c) {
