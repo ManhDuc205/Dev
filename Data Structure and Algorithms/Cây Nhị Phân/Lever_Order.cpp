@@ -38,7 +38,7 @@ int main() {
         char c;
         cin >> u >> v >> c;
         if (root == NULL) {
-            root = new Node(u);
+            root = makeNode(u);
             makeRoot(root, u, v, c);
         } else {
             insertNode(root, u, v, c);
