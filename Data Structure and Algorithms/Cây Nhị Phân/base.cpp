@@ -1,57 +1,50 @@
 #include <iostream>
 using namespace std;
 
-struct Node {
+struct Node{
     int data;
-    Node *left, *right;
-    
-    // Constructor để khởi tạo node
-    Node(int x) {
-        data = x;
-        left = right = NULL;
-    }
+    Node *left;
+    Node *right;
 };
 
-// Hàm duyệt cây theo thứ tự NLR (Preorder)
-void preorder(Node* root) {
-    if (root == NULL) return;
-    cout << root->data << " ";
-    preorder(root->left);
-    preorder(root->right);
+Node *makeNode(int x){
+    Node *newNode = new Node;
+    newNode->data = x;
+    newNode->left = newNode->right = NULL;
+    return newNode;
 }
 
-// Hàm duyệt cây theo thứ tự LNR (Inorder)
-void inorder(Node* root) {
-    if (root == NULL) return;
-    inorder(root->left);
-    cout << root->data << " ";
-    inorder(root->right);
+void makeRoot(Node *root, int u, int v, char c){
+    if(c == 'L') root->left = makeNode(v);
+    else root->right = makeNode(v);
 }
 
-// Hàm duyệt cây theo thứ tự LRN (Postorder)
-void postorder(Node* root) {
-    if (root == NULL) return;
-    postorder(root->left);
-    postorder(root->right);
-    cout << root->data << " ";
+void insertNode(Node *root, int u, int v, char c){
+    if(root == NULL) return;
+    if(root->data == u){
+        makeRoot(root, u, v, c);
+    }
+    else{
+        insertNode(root->left, u, v, c);
+        insertNode(root->right, u, v, c);
+    }
 }
 
-int main() {
-    // Tạo cây nhị phân với constructor
-    Node* root = new Node(1);
-    root->left = new Node(2);
-    root->right = new Node(3);
-    root->left->left = new Node(4);
-    root->left->right = new Node(5);
-
-    cout << " Preorder (NLR): ";
-    preorder(root);
-    cout << "\n Inorder (LNR): ";
-    inorder(root);
-    cout << "\n Postorder (LRN): ";
-    postorder(root);
-
-    return 0;
+int main(){
+    Node *root = NULL;
+    int n; cin >> n;
+    for(int i = 0; i < n; i++){
+        int u, v;
+        char c;
+        cin >> u >> v >> c;
+        if(root == NULL){
+            root = makeNode(u);
+            makeRoot(root, u, v, c);
+        }
+        else {
+            insertNode(root, u, v, c);
+        }
+    }
 }
 
 /*
