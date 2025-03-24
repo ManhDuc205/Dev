@@ -5,15 +5,19 @@ using namespace std;
 struct Node {
     int data;
     Node *left, *right;
-    Node(int x) {
-        data = x;
-        left = right = NULL;
-    }
+
 };
+
+Node *makeNode(int x){
+    Node *newNode = new Node;
+    newNode->data = x;
+    newNode->left = newNode->right = NULL;
+    return newNode;
+}
 
 // Hàm chèn một node vào cây BST
 Node* insertBST(Node* root, int x) {
-    if (root == NULL) return new Node(x);
+    if (root == NULL) return makeNode(x);
     if (x < root->data) root->left = insertBST(root->left, x);
     else root->right = insertBST(root->right, x);
     return root;
@@ -22,7 +26,7 @@ Node* insertBST(Node* root, int x) {
 // Hàm xây dựng BST từ level-order
 Node* buildBST(int arr[], int n) {
     if (n == 0) return NULL;
-    Node* root = new Node(arr[0]); // Phần tử đầu tiên là gốc
+    Node* root = makeNode(arr[0]); // Phần tử đầu tiên là gốc
     for (int i = 1; i < n; i++) {
         insertBST(root, arr[i]); // Chèn từng phần tử vào BST
     }
