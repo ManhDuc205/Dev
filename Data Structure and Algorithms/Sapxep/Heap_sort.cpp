@@ -27,7 +27,7 @@ void heapify(int a[], int n, int i){
     }
     if (largest != i){
         swap ( a[i], a[largest]);
-        heapify(a, n , largest);
+        heapify(a, n , largest); // chuyển cây nhị phân lại về max heap
     }
 }
 void heapSort(int a[],int  n){
