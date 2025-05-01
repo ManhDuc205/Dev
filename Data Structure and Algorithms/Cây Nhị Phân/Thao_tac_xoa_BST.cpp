@@ -50,9 +50,9 @@ Node *DeleteNode(Node *root, int key){
             return tmp;
         }
         else{
-            Node *tmp = minNode(root->right);
+            Node *tmp = maxNode(root->left);
             root->data = tmp->data;
-            root->right = DeleteNode(root->right, tmp->data);
+            root->left = DeleteNode(root->left, tmp->data);
         }
     }
     return root;
