@@ -3,10 +3,10 @@ Câu 1: Viết chương trình thực hiện các yêu cầu sau:
 Khai báo lớp thí sinh với các thuộc tính: mã thí sinh, họ tên, điểm toán, điểm lý, điểm hóa.
 Xây dựng các phương thức: nhập, xuất, tính tổng điểm một đối tượng thí sinh.
 Xây dựng constructor không đối, có đối
-Nhập vào n thí sinh. In ra màn hình thông tin của thí sinh có tổng điểm cao nhất (yêu cầu sử dụng biến con trỏ để cấp phát và giải phóng bộ nhớ).
+Nhập vào n thí sinh. In ra màn hình thông tin của thí sinh có tổng điểm cao nhất 
+(yêu cầu sử dụng biến con trỏ để cấp phát và giải phóng bộ nhớ).
 Sắp xếp danh sách theo họ tên tăng dần (đọc phần getter, 
 Tìm kiếm sinh viên theo họ tên
-
 */
 
 #include <iostream>
@@ -32,7 +32,6 @@ class ThiSinh{
         cout << "Nhap ma thi sinh: ";
         getline(cin, mats);
         cout << "Nhap ho ten thi sinh: ";
-        
         getline(cin, hoten);
         cout << "Nhap diem Toan: ";
         cin >> diemtoan;
